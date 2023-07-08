@@ -2,16 +2,14 @@ import { Op } from "sequelize";
 import Country from "../models/country.model.js";
 import db from "../connection/dbConnection.js";
 import axios from "axios";
+// import { Json } from "sequelize/types/utils.js";
 
 let func = async (req, res) => {
   try {
-    const res = await axios({
-      method: "get",
-      url: "https://restcountries.com/v3.1/all",
-      responseType: "stream",
-    });
-    let newDate = await res.data;
-    let newArray = newDate?.map((i) => {
+    const responce = await axios("https://restcountries.com/v3.1/all");
+
+    let newDate = await responce.data;
+    let newArray = newDate.map((i) => {
       return {
         name_common: i["name"]["common"],
         name_official: i["name"]["official"],
@@ -43,8 +41,9 @@ let func = async (req, res) => {
 
     await Country.bulkCreate(newArray);
 
-    res.send(newArray);
+    res.send({ data: newArray });
   } catch (error) {
+    console.log(1);
     res.status(400).send(error.message);
   }
 };
