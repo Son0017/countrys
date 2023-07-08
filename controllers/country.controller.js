@@ -10,7 +10,7 @@ let func = async (req, res) => {
       url: "https://restcountries.com/v3.1/all",
       responseType: "stream",
     });
-    let newDate = res.data;
+    let newDate = await res.data;
     let newArray = newDate.map((i) => {
       return {
         name_common: i["name"]["common"],
