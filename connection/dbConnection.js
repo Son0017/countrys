@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 
 const db = new Sequelize(
-  "postgres://son:oJ9u2O6MGMYWDUKgztUVzMuF6W3ysfGH@dpg-cikinih5rnuvtgplcjq0-a.oregon-postgres.render.com/countries_yfcx"
+  "postgres://son:oJ9u2O6MGMYWDUKgztUVzMuF6W3ysfGH@dpg-cikinih5rnuvtgplcjq0-a/countries_yfcx"
 );
 try {
   await db.authenticate();
