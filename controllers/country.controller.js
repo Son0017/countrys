@@ -1,12 +1,16 @@
 import { Op } from "sequelize";
 import Country from "../models/country.model.js";
 import db from "../connection/dbConnection.js";
+import axios from "axios";
 
 let func = async (req, res) => {
   try {
-    const data = await fetch("https://restcountries.com/v3.1/all");
+    const data = await axios({
+      method: "get",
+      url: "https://restcountries.com/v3.1/all",
+      responseType: "stream",
+    });
     let newDate = await data.json();
-    console.log(1);
     let newArray = newDate.map((i) => {
       return {
         name_common: i["name"]["common"],
