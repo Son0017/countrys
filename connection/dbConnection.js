@@ -1,9 +1,8 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize("country", "postgres", "12345", {
-  host: "localhost",
-  dialect: "postgres",
-});
+const db = new Sequelize(
+  "postgres://son:oJ9u2O6MGMYWDUKgztUVzMuF6W3ysfGH@dpg-cikinih5rnuvtgplcjq0-a.oregon-postgres.render.com/countries_yfcx"
+);
 try {
   await db.authenticate();
   console.log("Connection has been established successfully.");
