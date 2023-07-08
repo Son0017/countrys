@@ -5,12 +5,12 @@ import axios from "axios";
 
 let func = async (req, res) => {
   try {
-    const data = await axios({
+    const res = await axios({
       method: "get",
       url: "https://restcountries.com/v3.1/all",
       responseType: "stream",
     });
-    let newDate = await data.json();
+    let newDate = res.data;
     let newArray = newDate.map((i) => {
       return {
         name_common: i["name"]["common"],
