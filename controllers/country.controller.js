@@ -11,7 +11,7 @@ let func = async (req, res) => {
       responseType: "stream",
     });
     let newDate = await res.data;
-    let newArray = newDate.map((i) => {
+    let newArray = newDate?.map((i) => {
       return {
         name_common: i["name"]["common"],
         name_official: i["name"]["official"],
